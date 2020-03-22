@@ -22,8 +22,10 @@ class ARPresenter: NSObject {
     
     weak var view: ARViewControllerInput?
     
-    private let somePointMock = CLLocation(latitude: 59.929469,
-                                           longitude: 30.296656)
+    private let service = MapService()
+    
+    private let somePointMock = CLLocation(latitude: 59.929631,
+                                           longitude: 30.305279)
     
     private var userNode: SCNNode?
     
@@ -39,6 +41,13 @@ extension ARPresenter: ARViewControllerOutput {
     
     func viewDidLoad() {
         locationManager.startScanning()
+        service.loadPolygons {
+            result in
+            
+            if case .success(let polygons) = result {
+                print(polygons)
+            }
+        }
     }
 }
 
@@ -55,8 +64,8 @@ extension ARPresenter: CLLocationManagerDelegate {
                          didUpdateLocations locations: [CLLocation]) {
         
         if let location = locations.last {
+            print(location)
             let distance = location.distance(from: somePointMock)
-            print(distance)
             view?.updateDistance(Int(distance))
             let node: SCNNode
             if let userNode = userNode {

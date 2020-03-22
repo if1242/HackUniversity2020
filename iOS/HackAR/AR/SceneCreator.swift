@@ -13,7 +13,7 @@ import ARKit
 enum SceneCreator {
     
     private static let defaultSphere: SCNSphere = {
-        let sphere = SCNSphere(radius: 4)
+        let sphere = SCNSphere(radius: 1)
         let material = SCNMaterial()
         material.diffuse.contents = UIColor.red
         sphere.isGeodesic = true

@@ -46,9 +46,10 @@ class ARViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = UIColor.systemBackground
         view.addSubview(arScene)
         view.addSubview(distanceLabel)
-        distanceLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 24).isActive = true
+        distanceLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
         distanceLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         output?.viewDidLoad()
     }

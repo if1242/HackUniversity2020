@@ -15,6 +15,6 @@ extension SCNNode {
     func updatePosition(_ first: CLLocation, _ second: CLLocation) {
         position = first.translatedVectorTo(second)
         let distance = Float(first.distance(from: second))
-        scale = first.scaled(distance: distance)
+//        scale = first.scaled(distance: distance)
     }
 }
